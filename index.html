@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- ************ HEAD ************ -->
+	<head>
+		<!-- Page view -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>ChatGPT Web Intergration App | Code Alpha Internship - Ernest B. Shongwe</title>
+
+
+		
+		<!-- #Styling -->
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+		<!-- Custom CSS -->
+
+		<!-- end of Custom CSS -->
+
+
+
+		<style>
+
+		</style>
+
+	</head>
+	<!-- ************ end of HEAD ************ -->
+	<body>
+
+		<!-- ************ App Container ************ -->
+		<div class="container chat-container">
+			<h1 class="text-center">ChatGPT Chatbot</h1>
+
+			<!-- Chat Container -->
+			<div id="chat" class="mb-3"></div>
+
+			<input id="userInput" class="form-control" placeholder="Type your message...">
+
+			<button onclick="sendMessage()" class="btn btn-primary mt-3">Send</button>
+		</div>
+		<!-- ************ end of App Container ************ -->
+
+
+		<!-- ************ App Controller Script ************ -->
+		<script>
+			const chatDiv = document.getElementById("chat");
+			const userInput = document.getElementById("userInput");
+
+			const socket = new WebSocket("ws://localhost:8000/ws");
+
+			socket.onmessage = (event) => {
+				const response = event.data;
+				chatDiv.innerHTML += `<div class="chat-message">${response}</div>`;
+			};
+
+			function sendMessage() {
+				const message = userInput.value;
+				chatDiv.innerHTML += `<div class="chat-message">You: ${message}</div>`;
+				socket.send(message);
+				userInput.value = "";
+			}
+		</script>
+	</body>
+</html>
