@@ -1,40 +1,39 @@
-// #1. Function to retrieve chat history from local storage
-function getChatHistory() {
-    // #1.1 Retrieve chat history from local storage or initialize as an empty array if not present
-    return JSON.parse(localStorage.getItem('chatHistory')) || [];
+// #1. Retrieve chat history data from API
+async function fetchChatHistory() {
+    try {
+        // #1.1 Request to fetch chat history data from API
+        const response = await fetch('https://chat.openai.com/chat-history');
+        if (!response.ok) {
+            throw new Error('Failed to fetch chat history data');
+        }
+        // #1.2 Parse JSON response
+        const data = await response.json();
+        return data; // #1.2.1 Return chat history data
+    } catch (error) {
+        console.error('Error fetching chat history:', error);
+        return []; // #1.2.2 Returns empty array in case of error
+    }
 }
 
-// #2. Saves chat history to local storage
-function saveChatHistory(history) {
-    // #2.1 Saves chat history to local storage
-    localStorage.setItem('chatHistory', JSON.stringify(history));
-}
-
-// #3. Populates the dropdown menu with chat history options
-function populateChatDropdown() {
+// #2. Populates dropdown menu with chat history options
+async function populateChatDropdown() {
     const dropdownContent = document.getElementById("chatDropdownContent");
-    // #3.1 Clears existing options
+    // #2.1 Clear existing options
     dropdownContent.innerHTML = "";
-    // #3.2 Retrieves chat history from local storage
-    const chatHistory = getChatHistory();
-    // #3.3 Populates dropdown with chat history options
-    chatHistory.forEach(chat => {
-        const option = document.createElement("a");
-        option.textContent = chat;
-        option.href = "#";
-        dropdownContent.appendChild(option);
-    });
+    try {
+        // #2.1.1 Fetch chat history data
+        const chatHistory = await fetchChatHistory();
+        // #2.1.2 Populates dropdown with chat history options
+        chatHistory.forEach(chat => {
+            const option = document.createElement("a");
+            option.textContent = chat;
+            option.href = "#";
+            dropdownContent.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error populating chat dropdown:', error);
+    }
 }
 
-// #4. Adds a new chat to the chat history
-function addChatToHistory(chat) {
-    // #4.1 Retrieves existing chat history from local storage
-    let chatHistory = getChatHistory();
-    // #4.2 Adds the new chat to the chat history
-    chatHistory.push(chat);
-    // #4.3 Saves the updated chat history to local storage
-    saveChatHistory(chatHistory);
-}
-
-// #5. Calls function to populate the dropdown menu on page load
+// #3. Calls function to populate the dropdown menu on page load
 populateChatDropdown();
