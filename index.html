@@ -32,12 +32,12 @@
 		<div class="navbar">
 			<h2>Chat History</h2>
 			<!-- Dropdown menu for chat history -->
-			<div class="dropdown">
+
+			<div class="dropdown" id="chatDropdown">
 				<button class="dropbtn">Select Chat</button>
-				<div class="dropdown-content">
-					<a href="#">Chat 1</a>
-					<a href="#">Chat 2</a>
-					<a href="#">Chat 3</a>
+
+				<div class="dropdown-content" id="chatDropdownContent">
+					<!-- Chat history dynamic population -->
 				</div>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 		<!-- ************ end of App Container ************ -->
 
 
-		<!-- ************ App Controller Script ************ -->
+		<!-- ************ App Controller Scripts ************ -->
 		<script>
 			const chatDiv = document.getElementById("chat");
 			const userInput = document.getElementById("userInput");
@@ -76,5 +76,8 @@
 				userInput.value = "";
 			}
 		</script>
+
+		<script src="script.js"></script>
+
 	</body>
 </html>
