@@ -5,6 +5,9 @@ import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
 
+// #0. Var for #3...
+const OPENAI_API_KEY = "YOUR API KEY"; //Replace with your generated openai api key
+
 function App() {
   // #1. State to store chat messages
   const [chatMessages, setChatMessages] = useState([
@@ -28,6 +31,19 @@ function App() {
  	const updatedChatMessages = [...chatMessages, newUserMessage];
 	  setChatMessages(updatedChatMessages);
   };
+	async function processUserMessageToChatGPT(messages) {
+		// Prepare the messages in the required format for the API
+		let apiMessages = messages.map((messageObject) => {
+			let role = "";
+   			if (messageObject.sender === "ChatGPT") {
+				role = "assistant";
+   			} else {
+				role = "user";
+			}
+
+			return { role: role, content: messageObject.message };
+		});
+	}
 
   return (
     <>
