@@ -52,6 +52,7 @@ h1 {
 /* Style for the h2 in navbar */
 .navbar h2 {
     color: #fff;
+    font-family: sans-serif;
 }
 
 /* Dropdown styles */
@@ -61,7 +62,7 @@ h1 {
 }
 
 .dropbtn {
-    background-color: #4CAF50; /* Green background color for dropdown button */
+    background-color: #4CAF50;
     color: white;
     padding: 10px;
     font-size: 16px;
