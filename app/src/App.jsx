@@ -13,7 +13,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 // Var
-const OPENAI_API_KEY = "YOUR API KEY";
+const OPENAI_API_KEY = "Enter your key";
 
 function App() {
  // #1. State to manage the typing indicator of the chatbot
@@ -63,7 +63,7 @@ function App() {
    // #4.2 System message for ChatGPT
    const systemMessage = {
      role: "system",
-     content: "Explain all concept like a Professor in Biochemistry",
+     content: "Explain all concepts like a Professor in Biochemistry",
    };
 
    // #4.3 Prepare the API request body
