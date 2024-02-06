@@ -36,7 +36,13 @@ const [chatMessages, setChatMessages] = useState([
 <MessageList>
  {/* Map through chat messages and render each message */}
  {chatMessages.map((message, i) => {
-   return <Message key={i} model={message} />;
+   return (
+     <Message
+       key={i}
+       model={message}
+       style={message.sender === "ChatGPT" ? { textAlign: "left" } : {}}
+     />
+   );
  })}
 </MessageList>;
 
