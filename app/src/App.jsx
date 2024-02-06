@@ -24,4 +24,12 @@ function App() {
  );
 }
 
+//#1. State to store chat messages
+const [chatMessages, setChatMessages] = useState([
+ {
+   message: "Hello, I am ChatGPT!",
+   sender: "ChatGPT",
+ },
+]);
+
 export default App
