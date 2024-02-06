@@ -15,8 +15,18 @@ function App() {
   ]);
 
   // #2. Handler for sending user messages
-  const handleUserMessage = (message) => {
-    <MessageInput placeholder='Type Message here' onSend={handleUserMessage}/>
+  const handleUserMessage = async (userMessage) => {
+    //<MessageInput placeholder='Type Message here' onSend={handleUserMessage}/>
+	// #2.1 Create a new user message object
+	const newUserMessage = {
+		message: userMessage,
+		sender: "user",
+		direction: "outgoing",
+	};
+
+ 	// #2.2 Update chat messages state with the new user message
+ 	const updatedChatMessages = [...chatMessages, newUserMessage];
+	  setChatMessages(updatedChatMessages);
   };
 
   return (
