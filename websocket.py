@@ -4,7 +4,7 @@ from fastapi import WebSocket
 import openai  # Import the OpenAI API library
 
 # Set your OpenAI API key (replace with your actual key)
-openai.api_key = "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"
+openai.api_key = "OpenAI-API Key"
 
 async def websocket_handler(websocket: WebSocket):
     await websocket.accept()
