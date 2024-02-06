@@ -46,4 +46,7 @@ const [chatMessages, setChatMessages] = useState([
  })}
 </MessageList>;
 
+// #3. User Input Hanlder
+<MessageInput placeholder='Type Message here' onSend={handleUserMessage}/>
+
 export default App
