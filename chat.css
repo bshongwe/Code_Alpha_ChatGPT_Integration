@@ -1,6 +1,6 @@
 /* Global CSS */
 body {
-	font-family: Arial, sans-serif;
+	/*font-family: Arial, sans-serif;*/
 	background-color: #1e1e1e; /* Dark background color */
 	color: #ffffff; /* Light text color */
 }
@@ -40,7 +40,7 @@ h1 {
 
 /* Navbar styles */
 .navbar {
-    width: 200px; /* Adjust width as needed */
+    width: 250px; /* Adjust width as needed */
     background-color: #333; /* Dark background color for navbar */
     padding: 10px;
     position: fixed;
@@ -92,4 +92,10 @@ h1 {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* Style for the h2 in sidebar */
+.sidebar-heading {
+    font-family: 'Cute', sans-serif;
+    color: #fff;
 }
