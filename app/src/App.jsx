@@ -32,4 +32,12 @@ const [chatMessages, setChatMessages] = useState([
  },
 ]);
 
+// #2. Display messages in UI
+<MessageList>
+ {/* Map through chat messages and render each message */}
+ {chatMessages.map((message, i) => {
+   return <Message key={i} model={message} />;
+ })}
+</MessageList>;
+
 export default App
