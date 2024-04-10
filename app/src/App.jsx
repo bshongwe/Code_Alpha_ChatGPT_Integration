@@ -13,7 +13,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 // Var
-const OPENAI_API_KEY = "Enter your key";
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 function App() {
  // #1. State to manage the typing indicator of the chatbot
@@ -79,7 +79,7 @@ function App() {
    await fetch("https://api.openai.com/v1/chat/completions", {
      method: "POST",
      headers: {
-       Authorization: "Bearer " + OPENAI_API_KEY,
+       Authorization: "Bearer " + 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,
        "Content-Type": "application/json",
      },
      body: JSON.stringify(apiRequestBody),
