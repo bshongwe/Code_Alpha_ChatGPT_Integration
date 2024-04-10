@@ -13,8 +13,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 // Var
-// const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
-const OPENAI_API_KEY = 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;
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 function App() {
  // #1. State to manage the typing indicator of the chatbot
